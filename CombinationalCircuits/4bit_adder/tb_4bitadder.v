@@ -13,7 +13,7 @@ fourbit_adder u_4bit(
 integer i, j;
 
 initial begin
-    $dumpfile("4bitadder_wave.vcd");
+    $dumpfile("4bitadder_waves.vcd");
     $dumpvars(0, tb_4bitadder);
     $display("|A|B|Cin|SUM|Cout|");
     $display("|--|--|--|--|--|");

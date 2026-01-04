@@ -17,10 +17,11 @@ integer i;
 initial begin
     $dumpfile("binarygray_waves.vcd");
     $dumpvars(0, tb_binarygray);
-    $display("x  y  z");
+    $display("|Binary|Gray|Binary|");
+    $display("|-|-|-|");
     for(i= 0; i< 16; i+= 1)begin
         x= i; #10;
-        $display("%4b %4b %4b", x, y, z);
+        $display("|%4b|%4b|%4b|", x, y, z);
     end
     $finish;
 end

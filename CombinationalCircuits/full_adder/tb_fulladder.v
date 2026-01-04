@@ -12,10 +12,11 @@ initial begin
     $dumpfile("fulladder_wave.vcd");
     $dumpvars(0, tb_fulladder);
 
-    $display("A  B  CIN  SUM  COUT");
+    $display("|A|B|Cin|SUM|Cout|");
+    $display("|-|-|-|-|-|");
     for(integer i= 0; i< 8; i= i+1)begin
         {a, b, cin}= i; #10;
-        $display("%b  %b  %b  %b  %b", a, b, cin, sum, cout);
+        $display("|%b|%b|%b|%b|%b|", a, b, cin, sum, cout);
     end
     $finish;
 end

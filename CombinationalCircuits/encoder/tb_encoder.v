@@ -12,10 +12,11 @@ integer i;
 initial begin
     $dumpfile("encoder4to2_waves.vcd");
     $dumpvars(0, tb_encoder4to2);
-    $display("X       Y");
+    $display("|X|Y|");
+    $display("|-|-|");
     for(i= 0; i< 16; i+= 1)begin
         x= i; #10;
-        $display("%d %d %d %d  %d %d", x[3], x[2], x[1], x[0], y[1], y[0]);
+        $display("|%4b|%2b|", x, y);
     end
     $finish;
 end
@@ -33,10 +34,11 @@ endmodule
 // initial begin
 //     $dumpfile("prienc4to2");
 //     $dumpvars(0, tb_priorityencoder4to2);
-//     $display("X     Y");
+//     $display("|X|Y|");
+//     $display("|-|-|"); 
 //     for(i= 0; i< 16; i+= 1)begin
 //         x= i; #10;
-//         $display("%d %d %d %d  %d %d", x[3], x[2], x[1], x[0], y[1], y[0]);
+//         $display("|%4b|%2b|", x, y);
 //     end
 //     $finish;
 // end

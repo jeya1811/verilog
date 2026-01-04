@@ -13,10 +13,11 @@ integer i;
 initial begin
     $dumpfile("decoder4to2_waves.vcd");
     $dumpvars(0, tb_decoder2to4);
-    $display("X     Y");
+    $display("|X|Y|");
+    $display("|-|-|");
     for(i= 0; i< 4; i+= 1)begin
         x= i; #10;
-        $display("%d %d   %d %d %d %d", x[1], x[0], y[3], y[2], y[1], y[0]);
+        $display("|%2b|%4b|", x, y);
     end
     $finish;
 end

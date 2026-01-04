@@ -36,16 +36,17 @@ initial begin
     $dumpfile("gates_wave.vcd");
     $dumpvars(0, tb_gates);
 
-    $display("A B  |  AND  OR NOT(A) NAND NOR XOR XNOR");
+    $display("|A|B|AND|OR|NOT(A)|NAND|NOR|XOR|XNOR|");
+    $display("|-|-|-|-|-|-|-|-|-|");
 
     a= 0; b= 0; #10;
-    $display("%b %b  |  %b   %b   %b   %b   %b   %b   %b", a, b, c_and, c_or, c_not, c_nand, c_nor, c_xor, c_xnor);
+    $display("|%b|%b|%b|%b|%b|%b|%b|%b|%b|", a, b, c_and, c_or, c_not, c_nand, c_nor, c_xor, c_xnor);
     a= 0; b= 1; #10;
-    $display("%b %b  |  %b   %b   %b   %b   %b   %b   %b", a, b, c_and, c_or, c_not, c_nand, c_nor, c_xor, c_xnor);
+    $display("|%b|%b|%b|%b|%b|%b|%b|%b|%b|", a, b, c_and, c_or, c_not, c_nand, c_nor, c_xor, c_xnor);
     a= 1; b= 0; #10; 
-    $display("%b %b  |  %b   %b   %b   %b   %b   %b   %b", a, b, c_and, c_or, c_not, c_nand, c_nor, c_xor, c_xnor);
+    $display("|%b|%b|%b|%b|%b|%b|%b|%b|%b|", a, b, c_and, c_or, c_not, c_nand, c_nor, c_xor, c_xnor);
     a= 1; b= 1; #10;
-    $display("%b %b  |  %b   %b   %b   %b   %b   %b   %b", a, b, c_and, c_or, c_not, c_nand, c_nor, c_xor, c_xnor);
+    $display("|%b|%b|%b|%b|%b|%b|%b|%b|%b|", a, b, c_and, c_or, c_not, c_nand, c_nor, c_xor, c_xnor);
     $finish;
 end
 endmodule

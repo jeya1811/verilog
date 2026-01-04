@@ -11,11 +11,12 @@ integer i, j;
 initial begin
     $dumpfile("comparator_waves.vcd");
     $dumpvars(0, tb_comparator);
-    $display("A   B   H  E  L");
+    $display("|A|B|A>B|A==B|A<B|");
+    $display("|-|-|-|-|-|");
     for(i= 0; i< 2; i+= 1)begin
         for(j= 0; j< 2; j+= 1)begin
             a= i; b= j; #10;
-            $display("%d %d  %d  %d  %d", a, b, h, e, l);
+            $display("|%d|%d|%d|%d|%d|", a, b, h, e, l);
         end
     end
     $finish;

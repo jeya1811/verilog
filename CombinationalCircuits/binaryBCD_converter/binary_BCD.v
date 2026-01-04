@@ -26,3 +26,13 @@ always @(*) begin
     ones= bcd_ones;
 end
 endmodule
+
+module BCDtobinary(
+    input [3:0] tens, ones,
+    output reg [7:0] y
+);
+
+always @(*) begin
+    y= tens* 8'd10+ ones;
+end
+endmodule

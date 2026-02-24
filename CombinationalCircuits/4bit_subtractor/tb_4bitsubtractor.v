@@ -1,10 +1,10 @@
 `timescale 1ps/1ps
 
 module tb_4bitsubtractor;
-    reg [3:0] x, y;
-    reg bin;
-    wire [3:0] diff;
-    wire bout;
+reg [3:0] x, y;
+reg bin;
+wire [3:0] diff;
+wire bout;
 
 fourbit_subtractor u_4bitsubtractor(
     .x(x), .y(y), .bin(bin), .diff(diff), .bout(bout)

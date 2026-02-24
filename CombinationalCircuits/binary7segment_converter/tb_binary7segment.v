@@ -1,8 +1,9 @@
 `timescale 1ps/1ps
+
 module tb_binary7segment;
-    reg [7:0] binary;
-    wire [3:0] bcd_tens, bcd_ones;
-    wire [6:0] seg_tens, seg_ones;
+reg [7:0] binary;
+wire [3:0] bcd_tens, bcd_ones;
+wire [6:0] seg_tens, seg_ones;
 
 binarytoBCD u_binarytoBCD(
     .binary(binary), .bcd_tens(bcd_tens), .bcd_ones(bcd_ones)

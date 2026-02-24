@@ -1,8 +1,8 @@
 `timescale 1ps/1ps
 
 module tb_fulladder;
-    reg a, b, cin;
-    wire sum, cout;
+reg a, b, cin;
+wire sum, cout;
 
 full_adder u_fulladder(
     .a(a), .b(b), .cin(cin), .sum(sum), .cout(cout)

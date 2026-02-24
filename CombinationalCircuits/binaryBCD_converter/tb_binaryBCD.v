@@ -1,9 +1,9 @@
 `timescale 1ps/1ps
 
 module tb_binaryBCD;
-    reg [7:0] x;
-    wire [3:0] tens, ones;
-    wire [7:0] y;
+reg [7:0] x;
+wire [3:0] tens, ones;
+wire [7:0] y;
 
 binarytoBCD u_binarytoBCD(
     .x(x), .tens(tens), .ones(ones)

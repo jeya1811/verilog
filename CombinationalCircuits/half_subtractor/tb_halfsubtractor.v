@@ -1,8 +1,8 @@
 `timescale 1ps/1ps
 
 module tb_halfsubtractor;
-    reg a, b;
-    wire diff, borrow;
+reg a, b;
+wire diff, borrow;
 
 half_subtractor u_halfsubtractor(
     .a(a), .b(b), .diff(diff), .borrow(borrow)

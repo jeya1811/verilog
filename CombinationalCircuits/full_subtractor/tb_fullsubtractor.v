@@ -1,7 +1,8 @@
 `timescale 1ps/1ps
+
 module tb_fullsubtractor;
-    reg a, b, borrow_in;
-    wire diff, borrow_out;
+reg a, b, borrow_in;
+wire diff, borrow_out;
 
 full_subtractor u_fullsubtractor(
     .a(a), .b(b), .borrow_in(borrow_in), .diff(diff), .borrow_out(borrow_out)

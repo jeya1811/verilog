@@ -1,8 +1,8 @@
 `timescale 1ps/1ps
 
 module tb_halfadder;
-    reg a, b;
-    wire sum, carry;
+reg a, b;
+wire sum, carry;
 
 half_adder u_halfadder(
     .a(a), .b(b), .sum(sum), .carry(carry)

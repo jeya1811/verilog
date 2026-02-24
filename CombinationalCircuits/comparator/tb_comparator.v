@@ -1,7 +1,8 @@
 `timescale 1ps/1ps
+
 module tb_comparator;
-    reg a, b;
-    wire h, e, l;
+reg a, b;
+wire h, e, l;
 
 comparartor u_comparator(
     .a(a), .b(b), .h(h), .e(e), .l(l)

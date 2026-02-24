@@ -1,10 +1,10 @@
 `timescale 1ps/1ps
 
 module tb_4bitadder;
-    reg [3:0] a, b;
-    reg cin;
-    wire [3:0] sum;
-    wire cout;
+reg [3:0] a, b;
+reg cin;
+wire [3:0] sum;
+wire cout;
 
 fourbit_adder u_4bit(
     .a(a), .b(b), .cin(cin), .sum(sum), .cout(cout)

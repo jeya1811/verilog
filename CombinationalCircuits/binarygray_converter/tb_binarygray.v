@@ -1,8 +1,8 @@
 `timescale 1ps/1ps
 
 module tb_binarygray;
-    reg [3:0] x;
-    wire [3:0] y, z;
+reg [3:0] x;
+wire [3:0] y, z;
 
 binarytogray u_binarytogray(
     .x(x), .y(y)

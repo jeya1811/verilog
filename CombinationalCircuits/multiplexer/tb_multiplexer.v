@@ -1,8 +1,8 @@
 `timescale 1ps/1ps
 // module tb_mux2to1;
-//     reg [1:0] a;
-//     reg sel;  
-//     wire y;
+// reg [1:0] a;
+// reg sel;  
+// wire y;
 
 // mux_2to1 u_mux2to1(
 //     .a(a), .sel(sel), .y(y)
@@ -24,9 +24,9 @@
 // endmodule
 
 module tb_mux4to1;
-    reg [3:0] a;
-    reg [1:0] sel;
-    wire y;
+reg [3:0] a;
+reg [1:0] sel;
+wire y;
 
 mux_4to1 u_mux4to1(
     .a(a), .sel(sel), .y(y)

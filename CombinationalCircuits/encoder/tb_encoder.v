@@ -1,7 +1,8 @@
 `timescale 1ps/1ps
+
 module tb_encoder4to2;
-    reg [3:0] x;
-    wire [1:0] y;
+reg [3:0] x;
+wire [1:0] y;
 
 encoder_4to1 u_enc4to2(
     .x(x), .y(y)

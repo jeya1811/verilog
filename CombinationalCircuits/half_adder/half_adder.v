@@ -1,5 +1,5 @@
 module half_adder (
-  input  a,
+  input a,
   b,
   output sum,
   carry

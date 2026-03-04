@@ -1,5 +1,5 @@
 module full_adder (
-  input  a,
+  input a,
   b,
   cin,
   output sum,

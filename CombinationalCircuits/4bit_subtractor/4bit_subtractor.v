@@ -1,5 +1,5 @@
 module full_subtractor (
-  input  x,
+  input x,
   y,
   bin,
   output diff,

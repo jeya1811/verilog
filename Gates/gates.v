@@ -1,5 +1,5 @@
 module and_gate (
-  input  a,
+  input a,
   b,
   output c
 );
@@ -7,7 +7,7 @@ module and_gate (
 endmodule
 
 module or_gate (
-  input  a,
+  input a,
   b,
   output c
 );
@@ -15,14 +15,14 @@ module or_gate (
 endmodule
 
 module not_gate (
-  input  a,
+  input a,
   output b
 );
   assign b = ~a;
 endmodule
 
 module nand_gate (
-  input  a,
+  input a,
   b,
   output c
 );
@@ -30,7 +30,7 @@ module nand_gate (
 endmodule
 
 module nor_gate (
-  input  a,
+  input a,
   b,
   output c
 );
@@ -38,7 +38,7 @@ module nor_gate (
 endmodule
 
 module xor_gate (
-  input  a,
+  input a,
   b,
   output c
 );
@@ -46,7 +46,7 @@ module xor_gate (
 endmodule
 
 module xnor_gate (
-  input  a,
+  input a,
   b,
   output c
 );

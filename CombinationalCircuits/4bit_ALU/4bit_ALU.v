@@ -2,62 +2,62 @@
 
 // Logical Operation
 module fourBit_and (
-  input  [3:0] a,
-  b,
+  input [3:0] a,
+  input [3:0] b,
   output [3:0] y
 );
   assign y = a & b;
 endmodule
 
 module fourBit_or (
-  input  [3:0] a,
-  b,
+  input [3:0] a,
+  input [3:0] b,
   output [3:0] y
 );
   assign y = a | b;
 endmodule
 
 module fourBit_not_a (
-  input  [3:0] a,
+  input [3:0] a,
   output [3:0] y
 );
   assign y = ~a;
 endmodule
 
 module fourBit_not_b (
-  input  [3:0] b,
+  input [3:0] b,
   output [3:0] y
 );
   assign y = ~b;
 endmodule
 
 module fourBit_nand (
-  input  [3:0] a,
-  b,
+  input [3:0] a,
+  input [3:0] b,
   output [3:0] y
 );
   assign y = ~(a & b);
 endmodule
 
 module fourBit_nor (
-  input  [3:0] a,
-  b,
+  input [3:0] a,
+  input [3:0] b,
   output [3:0] y
 );
   assign y = ~(a | b);
 endmodule
 
 module fourBit_xor (
-  input  [3:0] a,
-  b,
+  input [3:0] a,
+  input [3:0] b,
   output [3:0] y
 );
   assign y = a ^ b;
 endmodule
 
 module fourBit_xnor (
-  input  [3:0] a,
-  b,
+  input [3:0] a,
+  input [3:0] b,
   output [3:0] y
 );
   assign y = ~(a ^ b);
@@ -67,7 +67,7 @@ endmodule
 
 module fourBit_adder (
   input [3:0] a,
-  b,
+  input [3:0] b,
   output [3:0] y,
   output carry
 );
@@ -76,7 +76,7 @@ endmodule
 
 module fourBit_subtractor (
   input [3:0] a,
-  b,
+  input [3:0] b,
   output [3:0] y,
   output carry
 );
@@ -86,28 +86,28 @@ endmodule
 // Shift Operation
 
 module fourBit_shiftLeft_a (
-  input  [3:0] a,
+  input [3:0] a,
   output [3:0] y
 );
   assign y = a << 1;
 endmodule
 
 module fourBit_shiftRight_a (
-  input  [3:0] a,
+  input [3:0] a,
   output [3:0] y
 );
   assign y = a >> 1;
 endmodule
 
 module fourBit_shiftLeft_b (
-  input  [3:0] b,
+  input [3:0] b,
   output [3:0] y
 );
   assign y = b << 1;
 endmodule
 
 module fourBit_shiftRight_b (
-  input  [3:0] b,
+  input [3:0] b,
   output [3:0] y
 );
   assign y = b >> 1;
@@ -117,7 +117,7 @@ endmodule
 
 module fourBit_lessThan_a (
   input [3:0] a,
-  b,
+  input [3:0] b,
   output y
 );
   assign y = (a < b);
@@ -125,21 +125,79 @@ endmodule
 
 module fourBit_equalTo_a (
   input [3:0] a,
-  b,
+  input [3:0] b,
   output y
 );
   assign y = (a == b);
+endmodule
+
+// Multiplexer
+
+module multiplexer (
+  // operation code
+  input [3:0] opcode,
+  // arithmetic operation
+  input [3:0] adder_op,
+  input [3:0] subtractor_op,
+  // shift operation
+  input [3:0] shiftLeft_a_op,
+  input [3:0] shiftRight_a_op,
+  input [3:0] shiftLeft_b_op,
+  input [3:0] shiftRight_b_op,
+  // relational operation
+  input lessThan_a_op,
+  input equalTo_a_op,
+  // logical operation
+  input [3:0] and_op,
+  input [3:0] or_op,
+  input [3:0] not_a_op,
+  input [3:0] not_b_op,
+  input [3:0] nand_op,
+  input [3:0] nor_op,
+  input [3:0] xor_op,
+  input [3:0] xnor_op,
+  // carry
+  input adder_carry,
+  input subtractor_carry,
+  // output
+  output reg [3:0] out,
+  output reg carry,
+  output reg zero
+);
+  always @(*) begin
+    carry = 0;
+    zero  = 0;
+    case (opcode)
+      4'b0000: {carry, out} = {adder_carry, adder_op};
+      4'b0001: {carry, out} = {subtractor_carry, subtractor_op};
+      4'b0010: out = shiftLeft_a_op;
+      4'b0011: out = shiftRight_a_op;
+      4'b0100: out = shiftLeft_b_op;
+      4'b0101: out = shiftRight_b_op;
+      4'b0110: out = lessThan_a_op;
+      4'b0111: out = equalTo_a_op;
+      4'b1000: out = and_op;
+      4'b1001: out = or_op;
+      4'b1010: out = not_a_op;
+      4'b1011: out = not_b_op;
+      4'b1100: out = nand_op;
+      4'b1101: out = nor_op;
+      4'b1110: out = xor_op;
+      4'b1111: out = xnor_op;
+    endcase
+    zero = (out == 4'b0000);
+  end
 endmodule
 
 // ALU_Module
 
 module fourBit_ALU (
   input [3:0] a,
-  b,
+  input [3:0] b,
   input [3:0] opcode,
-  output reg [3:0] out,
-  output reg carry,
-  zero
+  output [3:0] out,
+  output carry,
+  output zero
 );
 
   wire [3:0] adder_op, subtractor_op, shiftLeft_a_op, shiftRight_a_op, shiftLeft_b_op, shiftRight_b_op;
@@ -227,31 +285,28 @@ module fourBit_ALU (
     .y(xnor_op)
   );
 
-  always @(*) begin
-    carry = 0;
-    zero  = 0;
-    case (opcode)
-      // arithmetic operation
-      4'b0000: {carry, out} = {adder_carry, adder_op};
-      4'b0001: {carry, out} = {subtractor_carry, subtractor_op};
-      // shift operation
-      4'b0010: out = shiftLeft_a_op;
-      4'b0011: out = shiftRight_a_op;
-      4'b0100: out = shiftLeft_b_op;
-      4'b0101: out = shiftRight_b_op;
-      // relational operation
-      4'b0110: out = lessThan_a_op;
-      4'b0111: out = equalTo_a_op;
-      // logical operation
-      4'b1000: out = and_op;
-      4'b1001: out = or_op;
-      4'b1010: out = not_a_op;
-      4'b1011: out = not_b_op;
-      4'b1100: out = nand_op;
-      4'b1101: out = nor_op;
-      4'b1110: out = xor_op;
-      4'b1111: out = xnor_op;
-    endcase
-    zero = (out == 4'b0000);
-  end
+  multiplexer u_mux (
+    .opcode(opcode),
+    .adder_op(adder_op),
+    .subtractor_op(subtractor_op),
+    .shiftLeft_a_op(shiftLeft_a_op),
+    .shiftRight_a_op(shiftRight_a_op),
+    .shiftLeft_b_op(shiftLeft_b_op),
+    .shiftRight_b_op(shiftRight_b_op),
+    .lessThan_a_op(lessThan_a_op),
+    .equalTo_a_op(equalTo_a_op),
+    .and_op(and_op),
+    .or_op(or_op),
+    .not_a_op(not_a_op),
+    .not_b_op(not_b_op),
+    .nand_op(nand_op),
+    .nor_op(nor_op),
+    .xor_op(xor_op),
+    .xnor_op(xnor_op),
+    .adder_carry(adder_carry),
+    .subtractor_carry(subtractor_carry),
+    .out(out),
+    .carry(carry),
+    .zero(zero)
+  );
 endmodule

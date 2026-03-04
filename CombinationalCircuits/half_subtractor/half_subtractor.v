@@ -1,5 +1,5 @@
 module half_subtractor (
-  input  a,
+  input a,
   b,
   output diff,
   borrow

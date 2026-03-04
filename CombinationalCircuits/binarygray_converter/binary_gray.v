@@ -1,5 +1,5 @@
 module binarytogray (
-  input  [3:0] x,
+  input [3:0] x,
   output [3:0] y
 );
   assign y[3] = x[3];
@@ -9,7 +9,7 @@ module binarytogray (
 endmodule
 
 module graytobinary (
-  input  [3:0] x,
+  input [3:0] x,
   output [3:0] y
 );
   assign y[3] = x[3];

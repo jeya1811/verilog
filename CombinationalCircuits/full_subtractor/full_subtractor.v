@@ -1,5 +1,5 @@
 module full_subtractor (
-  input  a,
+  input a,
   b,
   borrow_in,
   output diff,

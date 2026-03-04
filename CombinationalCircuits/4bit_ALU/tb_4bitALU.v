@@ -17,6 +17,8 @@ module tb_fourbitALU;
   );
 
   initial begin
+    $dumpfile("4bit_ALU_waves.vcd");
+    $dumpvars(0, tb_fourbitALU);
     $display("|a|b|opcode|out|carry|zero|");
     $display("|-|-|-|-|-|-|");
     for (integer i = 0; i < 16; i += 1) begin

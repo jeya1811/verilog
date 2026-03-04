@@ -1,27 +1,29 @@
-`timescale 1ps/1ps
+`timescale 1ps / 1ps
 
 module tb_encoder4to2;
-reg [3:0] x;
-wire [1:0] y;
+  reg  [3:0] x;
+  wire [1:0] y;
 
-encoder_4to1 u_enc4to2(
-    .x(x), .y(y)
-);
+  encoder_4to1 u_enc4to2 (
+    .x(x),
+    .y(y)
+  );
 
-integer i;
+  integer i;
 
-initial begin
+  initial begin
     $dumpfile("encoder4to2_waves.vcd");
     $dumpvars(0, tb_encoder4to2);
     $display("|X|Y|");
     $display("|-|-|");
-    for(i= 0; i< 16; i+= 1)begin
-        x= i; #10;
-        $display("|%4b|%2b|", x, y);
+    for (i = 0; i < 16; i += 1) begin
+      x = i;
+      #10;
+      $display("|%4b|%2b|", x, y);
     end
     $finish;
-end
-endmodule  
+  end
+endmodule
 
 // module tb_priorityencoder4to2;
 //     reg [3:0] x;

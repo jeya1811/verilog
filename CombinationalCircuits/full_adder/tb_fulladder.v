@@ -1,23 +1,28 @@
-`timescale 1ps/1ps
+`timescale 1ps / 1ps
 
 module tb_fulladder;
-reg a, b, cin;
-wire sum, cout;
+  reg a, b, cin;
+  wire sum, cout;
 
-full_adder u_fulladder(
-    .a(a), .b(b), .cin(cin), .sum(sum), .cout(cout)
-);
+  full_adder u_fulladder (
+    .a(a),
+    .b(b),
+    .cin(cin),
+    .sum(sum),
+    .cout(cout)
+  );
 
-initial begin
+  initial begin
     $dumpfile("fulladder_wave.vcd");
     $dumpvars(0, tb_fulladder);
 
     $display("|A|B|Cin|SUM|Cout|");
     $display("|-|-|-|-|-|");
-    for(integer i= 0; i< 8; i= i+1)begin
-        {a, b, cin}= i; #10;
-        $display("|%b|%b|%b|%b|%b|", a, b, cin, sum, cout);
+    for (integer i = 0; i < 8; i = i + 1) begin
+      {a, b, cin} = i;
+      #10;
+      $display("|%b|%b|%b|%b|%b|", a, b, cin, sum, cout);
     end
     $finish;
-end
+  end
 endmodule

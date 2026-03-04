@@ -1,0 +1,7 @@
+--indentation_spaces=2
+--port_declarations_indentation=indent
+--formal_parameters_indentation=indent
+--named_parameter_indentation=indent
+--named_port_indentation=indent
+--column_limit=9999
+--try_wrap_long_lines=false

@@ -25,11 +25,11 @@ module tb_fourbitALU;
           a = i;
           b = j;
           opcode = k;
-          #10 $display("|%b|%b|%b|%b|%b|%b|", a, b, opcode, out, carry, zero);
+          #10;
+          $display("|%b|%b|%b|%b|%b|%b|", a, b, opcode, out, carry, zero);
         end
       end
     end
     $finish;
   end
 endmodule
-;

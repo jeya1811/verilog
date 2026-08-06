@@ -11,7 +11,7 @@ endmodule
 // Testbench Module
 
 module tb;
-localparam Width= 2;
+localparam Width= 1;
 reg [Width-1:0] i0, i1;
 reg sel;
 wire [Width-1:0] y;

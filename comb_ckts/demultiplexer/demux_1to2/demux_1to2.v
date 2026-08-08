@@ -5,8 +5,8 @@ module demux_1to2 #(parameter Width= 1)(
   input sel,
   output [Width-1:0] out0, out1
 );
-assign out0= sel? 0: data;
-assign out1= sel? data: 0;
+assign out0= sel? 'b0: data;
+assign out1= sel? data: 'b0;
 endmodule
 
 // Testbench Module

@@ -6,10 +6,10 @@ module demux_1to4 #(parameter Width= 1)(
   output reg [Width-1:0] out0, out1, out2, out3
 );
 always @(*) begin
-  out0= 0;
-  out1= 0;
-  out2= 0;
-  out3= 0;
+  out0= 'b0;
+  out1= 'b0;
+  out2= 'b0;
+  out3= 'b0;
   case(sel)
     2'b00: out0= data;
     2'b01: out1= data;

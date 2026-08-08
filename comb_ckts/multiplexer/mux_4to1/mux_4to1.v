@@ -11,7 +11,7 @@ always @(*) begin
     2'b01: y= i1;
     2'b10: y= i2;
     2'b11: y= i3;
-    default: y= 0;
+    default: y= 'b0;
   endcase
 end
 endmodule

@@ -15,7 +15,7 @@ always @(*) begin
     3'b101: y= i5;
     3'b110: y= i6;
     3'b111: y= i7;
-    default: y= 0;
+    default: y= 'b0;
   endcase
 end
 endmodule

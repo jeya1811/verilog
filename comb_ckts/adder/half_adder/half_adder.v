@@ -18,7 +18,7 @@ integer i;
 half_adder dut(.a(a), .b(b), .sum(sum), .cout(cout));
 
 initial begin
-  for(i= 0; i< 4; i+= 1) begin
+  for(i= 0; i< 2** 2; i+= 1) begin
     {a, b}= i; #10;
   end
   $finish;

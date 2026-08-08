@@ -18,7 +18,7 @@ integer i;
 full_adder dut(.a(a), .b(b), .cin(cin), .sum(sum), .cout(cout));
 
 initial begin
-  for(i= 0; i< 8; i+= 1) begin
+  for(i= 0; i< 2** 3; i+= 1) begin
     {a, b, cin}= i; #10;
   end
   $finish;

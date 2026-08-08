@@ -18,7 +18,7 @@ integer i;
 half_subtractor dut(.a(a), .b(b), .diff(diff), .borrow(borrow));
 
 initial begin
-  for(i= 0; i< 4; i+= 1) begin
+  for(i= 0; i< 2** 2; i+= 1) begin
     {a, b}= i; #10;
   end
   $finish;

@@ -18,7 +18,7 @@ integer i;
 full_subtractor dut(.a(a), .b(b), .bin(bin), .diff(diff), .borrow(borrow));
 
 initial begin
-  for(i= 0; i< 8; i+= 1) begin
+  for(i= 0; i< 2** 3; i+= 1) begin
     {a, b, bin}= i; #10;
   end
   $finish;

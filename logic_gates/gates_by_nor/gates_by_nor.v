@@ -82,7 +82,7 @@ endmodule
 
 // Testbench Module
 
-module tb;
+module tb_gates_by_nor;
 localparam Width= 2;
 reg [Width-1:0] a, b;
 wire [Width-1:0] y_and, y_or, y_not, y_nand, y_nor, y_xor, y_xnor;
@@ -99,7 +99,7 @@ end
 
 initial begin
   $dumpfile(".vcd");
-  $dumpvars(0, tb);
+  $dumpvars(0, tb_gates_by_nor);
   $display("Bit Width= %0d", Width);
   $display("|TIME|A|B|AND|OR|NOT|NAND|NOR|XOR|XNOR|");
   $display("|-|-|-|-|-|-|-|-|-|-|");

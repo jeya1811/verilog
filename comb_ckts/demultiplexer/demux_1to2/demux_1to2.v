@@ -11,7 +11,7 @@ endmodule
 
 // Testbench Module
 
-module tb;
+module tb_demux_1to2;
 localparam Width= 2;
 reg [Width-1:0] data;
 reg sel;
@@ -29,7 +29,7 @@ end
 
 initial begin
   $dumpfile(".vcd");
-  $dumpvars(0, tb);
+  $dumpvars(0, tb_demux_1to2);
   $display("Bit Width= %0d", Width);
   $display("|TIME|DATA|SEL|OUT0|OUT1|");
   $display("|-|-|-|-|-|");

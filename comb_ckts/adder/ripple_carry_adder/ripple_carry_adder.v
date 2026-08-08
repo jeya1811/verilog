@@ -27,7 +27,7 @@ endmodule
 
 // Testbench Module
 
-module tb;
+module tb_ripple_carry_adder;
 localparam Width= 2;
 reg [Width-1:0] a, b;
 reg cin;
@@ -46,7 +46,7 @@ end
 
 initial begin
   $dumpfile(".vcd");
-  $dumpvars(0, tb);
+  $dumpvars(0, tb_ripple_carry_adder);
   $display("Bit Width= %0d", Width);
   $display("|TIME|A|B|Cin|SUM|Cout|");
   $display("|-|-|-|-|-|-|");

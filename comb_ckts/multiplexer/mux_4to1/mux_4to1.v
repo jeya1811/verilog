@@ -18,7 +18,7 @@ endmodule
 
 // Testbench Module
 
-module tb;
+module tb_mux_4to1;
 localparam Width= 1;
 reg [Width-1:0] i0, i1, i2, i3;
 reg [1:0] sel;
@@ -36,7 +36,7 @@ end
 
 initial begin
   $dumpfile(".vcd");
-  $dumpvars(0, tb);
+  $dumpvars(0, tb_mux_4to1);
   $display("Bit Width= %0d", Width);
   $display("|TIME|I0|I1|I2|I3|SEL|Y|");
   $display("|-|-|-|-|-|-|-|");

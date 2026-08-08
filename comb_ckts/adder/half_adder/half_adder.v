@@ -10,7 +10,7 @@ endmodule
 
 // Testbench Module
 
-module tb;
+module tb_half_adder;
 reg a, b;
 wire sum, cout;
 integer i;
@@ -26,7 +26,7 @@ end
 
 initial begin
   $dumpfile(".vcd");
-  $dumpvars(0, tb);
+  $dumpvars(0, tb_half_adder);
   $display("|TIME|A|B|SUM|Cout|");
   $display("|-|-|-|-|-|");
   $monitor("|%0t|%b|%b|%b|%b|", $time, a, b, sum, cout);

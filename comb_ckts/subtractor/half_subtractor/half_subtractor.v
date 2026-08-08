@@ -10,7 +10,7 @@ endmodule
 
 // Testbench Module
 
-module tb;
+module tb_half_subtractor;
 reg a, b;
 wire diff, borrow;
 integer i;
@@ -26,7 +26,7 @@ end
 
 initial begin
   $dumpfile(".vcd");
-  $dumpvars(0, tb);
+  $dumpvars(0, tb_half_subtractor);
   $display("|TIME|A|B|DIFF|BORROW|");
   $display("|-|-|-|-|-|");
   $monitor("|%0t|%b|%b|%b|%b|", $time, a, b, diff, borrow);

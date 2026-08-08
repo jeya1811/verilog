@@ -10,7 +10,7 @@ endmodule
 
 // Testbench Module
 
-module tb;
+module tb_full_adder;
 reg a, b, cin;
 wire sum, cout;
 integer i;
@@ -26,7 +26,7 @@ end
 
 initial begin
   $dumpfile(".vcd");
-  $dumpvars(0, tb);
+  $dumpvars(0, tb_full_adder);
   $display("|TIME|A|B|Cin|SUM|Cout|");
   $display("|-|-|-|-|-|-|");
   $monitor("|%0t|%b|%b|%b|%b|%b|", $time, a, b, cin, sum, cout);

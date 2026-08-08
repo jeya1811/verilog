@@ -21,7 +21,7 @@ endmodule
 
 // Testbench Module
 
-module tb;
+module tb_priority_encoder_8to3;
 reg [7:0] data;
 wire [2:0] out;
 integer i;
@@ -37,7 +37,7 @@ end
 
 initial begin
   $dumpfile(".vcd");
-  $dumpvars(0, tb);
+  $dumpvars(0, tb_priority_encoder_8to3);
   $display("|TIME|DATA|OUT|");
   $display("|-|-|-|");
   $monitor("|%0t|%b|%b|", $time, data, out);

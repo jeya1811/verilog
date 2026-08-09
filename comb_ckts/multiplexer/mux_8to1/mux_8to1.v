@@ -1,21 +1,21 @@
 // Design Module
 
 module mux_8to1 #(parameter Width= 1)(
-  input [Width-1:0] i0, i1, i2, i3, i4, i5, i6, i7,
+  input [Width-1:0] ip0, ip1, ip2, ip3, ip4, ip5, ip6, ip7,
   input [2:0] sel,
-  output reg [Width-1:0] y
+  output reg [Width-1:0] op
 );
 always @(*) begin
   case(sel)
-    3'b000: y= i0;
-    3'b001: y= i1;
-    3'b010: y= i2;
-    3'b011: y= i3;
-    3'b100: y= i4;
-    3'b101: y= i5;
-    3'b110: y= i6;
-    3'b111: y= i7;
-    default: y= 'b0;
+    3'b000: op= ip0;
+    3'b001: op= ip1;
+    3'b010: op= ip2;
+    3'b011: op= ip3;
+    3'b100: op= ip4;
+    3'b101: op= ip5;
+    3'b110: op= ip6;
+    3'b111: op= ip7;
+    default: op= 'b0;
   endcase
 end
 endmodule
@@ -24,16 +24,16 @@ endmodule
 
 module tb_mux_8to1;
 localparam Width= 1;
-reg [Width-1:0] i0, i1, i2, i3, i4, i5, i6, i7;
+reg [Width-1:0] ip0, ip1, ip2, ip3, ip4, ip5, ip6, ip7;
 reg [2:0] sel;
-wire [Width-1:0] y;
+wire [Width-1:0] op;
 integer i;
 
-mux_8to1 #(.Width(Width)) dut(.i0(i0), .i1(i1), .i2(i2), .i3(i3), .i4(i4), .i5(i5), .i6(i6), .i7(i7), .sel(sel), .y(y));
+mux_8to1 #(.Width(Width)) dut(.ip0(ip0), .ip1(ip1), .ip2(ip2), .ip3(ip3), .ip4(ip4), .ip5(ip5), .ip6(ip6), .ip7(ip7), .sel(sel), .op(op));
 
 initial begin
   for(i= 0; i< 2** (8* Width+ 4); i+= 1) begin
-    {i0, i1, i2, i3, i4, i5, i6, i7, sel}= i; #10;
+    {ip0, ip1, ip2, ip3, ip4, ip5, ip6, ip7, sel}= i; #10;
   end
   $finish;
 end
@@ -42,8 +42,8 @@ initial begin
   $dumpfile(".vcd");
   $dumpvars(0, tb_mux_8to1);
   $display("Bit Width= %0d", Width);
-  $display("|TIME|I0|I1|I2|I3|I4|I5|I6|I7|SEL|Y|");
+  $display("|TIME|IP0|IP1|IP2|IP3|IP4|IP5|IP6|IP7|SEL|OP|");
   $display("|-|-|-|-|-|-|-|-|-|-|-|");
-  $monitor("|%0t|%b|%b|%b|%b|%b|%b|%b|%b|%b|%b|", $time, i0, i1, i2, i3, i4, i5, i6, i7, sel, y);
+  $monitor("|%0t|%b|%b|%b|%b|%b|%b|%b|%b|%b|%b|", $time, ip0, ip1, ip2, ip3, ip4, ip5, ip6, ip7, sel, op);
 end
 endmodule

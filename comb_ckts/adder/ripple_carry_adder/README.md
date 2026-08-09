@@ -1,7 +1,7 @@
 # Ripple Carry Adder
 
 Bit Width= 2
-|TIME|A|B|Cin|SUM|Cout|
+|TIME|IP0|IP1|Cip|SUM|Cop|
 |-|-|-|-|-|-|
 |0|00|00|0|00|0|
 |10|00|00|1|01|0|

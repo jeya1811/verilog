@@ -1,7 +1,7 @@
 # Multiplexer 2:1
 
 Bit Width= 1
-|TIME|I0|I1|SEL|Y|
+|TIME|IP0|IP1|SEL|OP|
 |-|-|-|-|-|
 |0|0|0|0|0|
 |10|0|0|1|0|

@@ -1,25 +1,25 @@
 // Design Module
 
 module half_subtractor(
-  input a, b,
-  output diff, borrow
+  input ip0, ip1,
+  output diff, bop
 );
-assign diff= a^ b;
-assign borrow= ~a& b;
+assign diff= ip0^ ip1;
+assign bop= ~ip0& ip1;
 endmodule
 
 // Testbench Module
 
 module tb_half_subtractor;
-reg a, b;
-wire diff, borrow;
+reg ip0, ip1;
+wire diff, bop;
 integer i;
 
-half_subtractor dut(.a(a), .b(b), .diff(diff), .borrow(borrow));
+half_subtractor dut(.ip0(ip0), .ip1(ip1), .diff(diff), .bop(bop));
 
 initial begin
   for(i= 0; i< 2** 2; i+= 1) begin
-    {a, b}= i; #10;
+    {ip0, ip1}= i; #10;
   end
   $finish;
 end
@@ -27,8 +27,8 @@ end
 initial begin
   $dumpfile(".vcd");
   $dumpvars(0, tb_half_subtractor);
-  $display("|TIME|A|B|DIFF|BORROW|");
+  $display("|TIME|IP0|IP1|DIFF|Bop|");
   $display("|-|-|-|-|-|");
-  $monitor("|%0t|%b|%b|%b|%b|", $time, a, b, diff, borrow);
+  $monitor("|%0t|%b|%b|%b|%b|", $time, ip0, ip1, diff, bop);
 end
 endmodule

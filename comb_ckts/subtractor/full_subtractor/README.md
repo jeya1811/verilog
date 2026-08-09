@@ -1,6 +1,6 @@
 # Full Subtractor
 
-|TIME|A|B|Bin|DIFF|BORROW|
+|TIME|IP0|IP1|Bip|DIFF|Bop|
 |-|-|-|-|-|-|
 |0|0|0|0|0|0|
 |10|0|0|1|1|1|

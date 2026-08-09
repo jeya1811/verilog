@@ -1,6 +1,6 @@
 # Priority Encoder 8:3
 
-|TIME|DATA|OUT|
+|TIME|IP|OP|
 |-|-|-|
 |0|00000000|xxx|
 |10|00000001|000|

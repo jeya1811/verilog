@@ -1,6 +1,6 @@
 # Encoder 4:2
 
-|TIME|DATA|OUT|
+|TIME|IP|OP|
 |-|-|-|
 |0|0000|xx|
 |10|0001|00|

@@ -1,14 +1,14 @@
 // Design Module
 
 module priority_encoder_2to1(
-  input [1:0] data,
-  output reg out
+  input [1:0] ip,
+  output reg op
 );
 always @(*) begin
-  casez(data)
-    2'b1?: out= 'b1;
-    2'b01: out= 'b0;
-    default: out= 'bx;
+  casez(ip)
+    2'b1?: op= 'b1;
+    2'b01: op= 'b0;
+    default: op= 'bx;
   endcase
 end
 endmodule
@@ -16,15 +16,15 @@ endmodule
 // Testbench Module
 
 module tb_priority_encoder_2to1;
-reg [1:0] data;
-wire out;
+reg [1:0] ip;
+wire op;
 integer i;
 
-priority_encoder_2to1 dut(.data(data), .out(out));
+priority_encoder_2to1 dut(.ip(ip), .op(op));
 
 initial begin
   for(i= 0; i< 2** 2; i+= 1) begin
-    data= i; #10;
+    ip= i; #10;
   end
   $finish;
 end
@@ -32,8 +32,8 @@ end
 initial begin
   $dumpfile(".vcd");
   $dumpvars(0, tb_priority_encoder_2to1);
-  $display("|TIME|DATA|OUT|");
+  $display("|TIME|IP|OP|");
   $display("|-|-|-|");
-  $monitor("|%0t|%b|%b|", $time, data, out);
+  $monitor("|%0t|%b|%b|", $time, ip, op);
 end
 endmodule

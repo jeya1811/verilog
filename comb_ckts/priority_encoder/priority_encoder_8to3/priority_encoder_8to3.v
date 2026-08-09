@@ -1,20 +1,20 @@
 // Design Module
 
 module priority_encoder_8to3(
-  input [7:0] data,
-  output reg [2:0] out
+  input [7:0] ip,
+  output reg [2:0] op
 );
 always @(*) begin
-  casez(data)
-    8'b1???????: out= 3'b111;
-    8'b01??????: out= 3'b110;
-    8'b001?????: out= 3'b101;
-    8'b0001????: out= 3'b100;
-    8'b00001???: out= 3'b011;
-    8'b000001??: out= 3'b010;
-    8'b0000001?: out= 3'b001;
-    8'b00000001: out= 3'b000;
-    default: out= 'bx;
+  casez(ip)
+    8'b1???????: op= 3'b111;
+    8'b01??????: op= 3'b110;
+    8'b001?????: op= 3'b101;
+    8'b0001????: op= 3'b100;
+    8'b00001???: op= 3'b011;
+    8'b000001??: op= 3'b010;
+    8'b0000001?: op= 3'b001;
+    8'b00000001: op= 3'b000;
+    default: op= 'bx;
   endcase
 end
 endmodule
@@ -22,15 +22,15 @@ endmodule
 // Testbench Module
 
 module tb_priority_encoder_8to3;
-reg [7:0] data;
-wire [2:0] out;
+reg [7:0] ip;
+wire [2:0] op;
 integer i;
 
-priority_encoder_8to3 dut(.data(data), .out(out));
+priority_encoder_8to3 dut(.ip(ip), .op(op));
 
 initial begin
   for(i= 0; i< 2** 8; i+= 1) begin
-    data= i; #10;
+    ip= i; #10;
   end
   $finish;
 end
@@ -38,8 +38,8 @@ end
 initial begin
   $dumpfile(".vcd");
   $dumpvars(0, tb_priority_encoder_8to3);
-  $display("|TIME|DATA|OUT|");
+  $display("|TIME|IP|OP|");
   $display("|-|-|-|");
-  $monitor("|%0t|%b|%b|", $time, data, out);
+  $monitor("|%0t|%b|%b|", $time, ip, op);
 end
 endmodule

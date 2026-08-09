@@ -1,6 +1,6 @@
 # Half Adder
 
-|TIME|A|B|SUM|Cout|
+|TIME|IP0|IP1|SUM|Cop|
 |-|-|-|-|-|
 |0|0|0|0|0|
 |10|0|1|1|0|

@@ -1,25 +1,25 @@
 // Design Module
 
 module full_adder(
-  input a, b, cin,
-  output sum, cout
+  input ip0, ip1, cip,
+  output sum, cop
 );
-assign sum= a^ b^ cin;
-assign cout= (a& b)| ((a^ b)& cin);
+assign sum= ip0^ ip1^ cip;
+assign cop= (ip0& ip1)| ((ip0^ ip1)& cip);
 endmodule
 
 // Testbench Module
 
 module tb_full_adder;
-reg a, b, cin;
-wire sum, cout;
+reg ip0, ip1, cip;
+wire sum, cop;
 integer i;
 
-full_adder dut(.a(a), .b(b), .cin(cin), .sum(sum), .cout(cout));
+full_adder dut(.ip0(ip0), .ip1(ip1), .cip(cip), .sum(sum), .cop(cop));
 
 initial begin
   for(i= 0; i< 2** 3; i+= 1) begin
-    {a, b, cin}= i; #10;
+    {ip0, ip1, cip}= i; #10;
   end
   $finish;
 end
@@ -27,8 +27,8 @@ end
 initial begin
   $dumpfile(".vcd");
   $dumpvars(0, tb_full_adder);
-  $display("|TIME|A|B|Cin|SUM|Cout|");
+  $display("|TIME|IP0|IP1|Cip|SUM|Cop|");
   $display("|-|-|-|-|-|-|");
-  $monitor("|%0t|%b|%b|%b|%b|%b|", $time, a, b, cin, sum, cout);
+  $monitor("|%0t|%b|%b|%b|%b|%b|", $time, ip0, ip1, cip, sum, cop);
 end
 endmodule

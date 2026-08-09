@@ -1,6 +1,6 @@
 # Encoder 2:1
 
-|TIME|DATA|OUT|
+|TIME|IP|OP|
 |-|-|-|
 |0|00|x|
 |10|01|0|

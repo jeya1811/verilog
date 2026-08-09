@@ -1,6 +1,6 @@
 # Half Subtractor
 
-|TIME|A|B|DIFF|BORROW|
+|TIME|IP0|IP1|DIFF|Bop|
 |-|-|-|-|-|
 |0|0|0|0|0|
 |10|0|1|1|1|

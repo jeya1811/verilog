@@ -1,7 +1,7 @@
 # Incrementer
 
 Bit Width= 2
-|TIME|IP|OP|
+|TIME|IN|OUT|
 |-|-|-|
 |0|00|01|
 |10|01|10|
@@ -9,7 +9,7 @@ Bit Width= 2
 |30|11|00|
 
 Bit Width= 4
-|TIME|IP|OP|
+|TIME|IN|OUT|
 |-|-|-|
 |0|0000|0001|
 |10|0001|0010|

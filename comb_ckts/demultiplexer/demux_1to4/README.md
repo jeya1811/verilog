@@ -1,7 +1,7 @@
 # Demultiplexer 1:4
 
 Bit Width= 1
-|TIME|IP|SEL|OP0|OP1|OP2|OP3|
+|TIME|IN|SEL|OUT0|OUT1|OUT2|OUT3|
 |-|-|-|-|-|-|-|
 |0|0|00|0|0|0|0|
 |10|0|01|0|0|0|0|
@@ -13,7 +13,7 @@ Bit Width= 1
 |70|1|11|0|0|0|1|
 
 Bit Width= 2
-|TIME|IP|SEL|OP0|OP1|OP2|OP3|
+|TIME|IN|SEL|OUT0|OUT1|OUT2|OUT3|
 |-|-|-|-|-|-|-|
 |0|00|00|00|00|00|00|
 |10|00|01|00|00|00|00|

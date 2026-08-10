@@ -1,7 +1,7 @@
-# Gates By NAND Gate
+# Gates By NAND
 
-Bit Width= 1
-|TIME|IP0|IP1|AND|OR|NOT|NAND|NOR|XOR|XNOR|
+ Bit Width= 1
+|TIME|IN0|IN1|AND|OR|NOT|NAND|NOR|XOR|XNOR|
 |-|-|-|-|-|-|-|-|-|-|
 |0|0|0|0|0|1|1|1|0|1|
 |10|0|1|0|1|1|1|0|1|0|
@@ -9,7 +9,7 @@ Bit Width= 1
 |30|1|1|1|1|0|0|0|0|1|
 
 Bit Width= 2
-|TIME|IP0|IP1|AND|OR|NOT|NAND|NOR|XOR|XNOR|
+|TIME|IN0|IN1|AND|OR|NOT|NAND|NOR|XOR|XNOR|
 |-|-|-|-|-|-|-|-|-|-|
 |0|00|00|00|00|11|11|11|00|11|
 |10|00|01|00|01|11|11|10|01|10|

@@ -1,7 +1,7 @@
 # Comparator
 
 Bit Width= 1
-|TIME|IP1|IP2|GT|EQ|LT|
+|TIME|IN1|IP2|GT|EQ|LT|
 |-|-|-|-|-|-|
 |0|0|0|0|1|0|
 |10|0|1|0|0|1|
@@ -9,7 +9,7 @@ Bit Width= 1
 |30|1|1|0|1|0|
 
 Bit Width= 2
-|TIME|IP1|IP2|GT|EQ|LT|
+|TIME|IN1|IP2|GT|EQ|LT|
 |-|-|-|-|-|-|
 |0|00|00|0|1|0|
 |10|00|01|0|0|1|

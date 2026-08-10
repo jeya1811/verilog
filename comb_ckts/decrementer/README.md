@@ -1,7 +1,7 @@
 # Decrementer
 
 Bit Width= 2
-|TIME|IP|OP|
+|TIME|IN|OUT|
 |-|-|-|
 |0|00|11|
 |10|01|00|
@@ -9,7 +9,7 @@ Bit Width= 2
 |30|11|10|
 
 Bit Width= 4
-|TIME|IP|OP|
+|TIME|IN|OUT|
 |-|-|-|
 |0|0000|1111|
 |10|0001|0000|

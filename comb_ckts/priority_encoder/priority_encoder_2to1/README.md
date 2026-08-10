@@ -1,6 +1,6 @@
 # Priority Encoder 2:1
 
-|TIME|IP|OP|
+|TIME|IN|OUT|
 |-|-|-|
 |0|00|x|
 |10|01|0|

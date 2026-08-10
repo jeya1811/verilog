@@ -1,7 +1,7 @@
 # Multiplexer 4:1
 
 Bit Width= 1
-|TIME|IP0|IP1|IP2|IP3|SEL|OP|
+|TIME|IN0|IN1|IN2|IN3|SEL|OUT|
 |-|-|-|-|-|-|-|
 |0|0|0|0|0|00|0|
 |10|0|0|0|0|01|0|

@@ -1,6 +1,6 @@
 # Priority Encoder 4:2
 
-|TIME|IP|OP|
+|TIME|IN|OUT|
 |-|-|-|
 |0|0000|xx|
 |10|0001|00|

@@ -1,25 +1,25 @@
 // Design Module
 
 module half_adder(
-  input ip0, ip1,
-  output sum, cop
+  input in0, in1,
+  output sum, cout
 );
-assign sum= ip0^ ip1;
-assign cop= ip0& ip1;
+assign sum= in0^ in1;
+assign cout= in0& in1;
 endmodule
 
 // Testbench Module
 
 module tb_half_adder;
-reg ip0, ip1;
-wire sum, cop;
+reg in0, in1;
+wire sum, cout;
 integer i;
 
-half_adder dut(.ip0(ip0), .ip1(ip1), .sum(sum), .cop(cop));
+half_adder dut(.in0(in0), .in1(in1), .sum(sum), .cout(cout));
 
 initial begin
   for(i= 0; i< 2** 2; i+= 1) begin
-    {ip0, ip1}= i; #10;
+    {in0, in1}= i; #10;
   end
   $finish;
 end
@@ -27,8 +27,8 @@ end
 initial begin
   $dumpfile(".vcd");
   $dumpvars(0, tb_half_adder);
-  $display("|TIME|IP0|IP1|SUM|Cop|");
+  $display("|TIME|IN0|IN1|SUM|Cout|");
   $display("|-|-|-|-|-|");
-  $monitor("|%0t|%b|%b|%b|%b|", $time, ip0, ip1, sum, cop);
+  $monitor("|%0t|%b|%b|%b|%b|", $time, in0, in1, sum, cout);
 end
 endmodule

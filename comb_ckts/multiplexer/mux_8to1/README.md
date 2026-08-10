@@ -1,7 +1,7 @@
 # Multiplexer 8:1
 
 Bit Width= 1
-|TIME|IP0|IP1|IP2|IP3|IP4|IP5|IP6|IP7|SEL|OP|
+|TIME|IN0|IN1|IN2|IN3|IN4|IN5|IN6|IN7|SEL|OUT|
 |-|-|-|-|-|-|-|-|-|-|-|
 |0|0|0|0|0|0|0|0|0|000|0|
 |10|0|0|0|0|0|0|0|0|001|0|

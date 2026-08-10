@@ -1,16 +1,16 @@
 // Design Module
 
 module priority_encoder_4to2(
-  input [3:0] ip,
-  output reg [1:0] op
+  input [3:0] in,
+  output reg [1:0] out
 );
 always @(*) begin
-  casez(ip)
-    4'b1???: op= 2'b11;
-    4'b01??: op= 2'b10;
-    4'b001?: op= 2'b01;
-    4'b0001: op= 2'b00;
-    default: op= 'bx;
+  casez(in)
+    4'b1???: out= 2'b11;
+    4'b01??: out= 2'b10;
+    4'b001?: out= 2'b01;
+    4'b0001: out= 2'b00;
+    default: out= 'bx;
   endcase
 end
 endmodule
@@ -18,15 +18,15 @@ endmodule
 // Testbench Module
 
 module tb_priority_encoder_4to2;
-reg [3:0] ip;
-wire [1:0] op;
+reg [3:0] in;
+wire [1:0] out;
 integer i;
 
-priority_encoder_4to2 dut(.ip(ip), .op(op));
+priority_encoder_4to2 dut(.in(in), .out(out));
 
 initial begin
   for(i= 0; i< 2** 4; i+= 1) begin
-    ip = i; #10;
+    in = i; #10;
   end
   $finish;
 end
@@ -34,8 +34,8 @@ end
 initial begin
   $dumpfile(".vcd");
   $dumpvars(0, tb_priority_encoder_4to2);
-  $display("|TIME|IP|OP|");
+  $display("|TIME|IN|OUT|");
   $display("|-|-|-|");
-  $monitor("|%0t|%b|%b|", $time, ip, op);
+  $monitor("|%0t|%b|%b|", $time, in, out);
 end
 endmodule

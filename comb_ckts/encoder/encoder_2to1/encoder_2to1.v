@@ -1,14 +1,14 @@
 // Design Module
 
 module encoder_2to1(
-  input [1:0] ip,
-  output reg op
+  input [1:0] in,
+  output reg out
 );
 always @(*) begin
-  case(ip)
-    2'b01: op= 'b0;
-    2'b10: op= 'b1;
-    default: op= 'bx;
+  case(in)
+    2'b01: out= 'b0;
+    2'b10: out= 'b1;
+    default: out= 'bx;
   endcase
 end
 endmodule
@@ -16,15 +16,15 @@ endmodule
 // Testbench Module
 
 module tb_encoder_2to1;
-reg [1:0] ip;
-wire op;
+reg [1:0] in;
+wire out;
 integer i;
 
-encoder_2to1 dut(.ip(ip), .op(op));
+encoder_2to1 dut(.in(in), .out(out));
 
 initial begin
   for(i= 0; i< 2** 2; i+= 1) begin
-    ip= i; #10;
+    in= i; #10;
   end
   $finish;
 end
@@ -32,8 +32,8 @@ end
 initial begin
   $dumpfile(".vcd");
   $dumpvars(0, tb_encoder_2to1);
-  $display("|TIME|IP|OP|");
+  $display("|TIME|IN|OUT|");
   $display("|-|-|-|");
-  $monitor("|%0t|%b|%b|", $time, ip, op);
+  $monitor("|%0t|%b|%b|", $time, in, out);
 end
 endmodule

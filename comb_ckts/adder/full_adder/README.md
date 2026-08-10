@@ -1,6 +1,6 @@
 # Full Adder
 
-|TIME|IP0|IP1|Cip|SUM|Cop|
+|TIME|IN0|IN1|Cin|SUM|Cout|
 |-|-|-|-|-|-|
 |0|0|0|0|0|0|
 |10|0|0|1|1|0|

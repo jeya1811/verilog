@@ -1,5 +1,11 @@
 # PISO Bidirectional Shift Register
 
+```bash
+DIR:
+  0 => LEFT
+  1 => RIGHT
+```
+
 FlipFlop Count= 4
 |TIME|CLK|RST|LOAD|DIR|IN|OUT|
 |-|-|-|-|-|-|-|

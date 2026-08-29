@@ -1,5 +1,11 @@
 # Synchronous Up Down Counter
 
+```bash
+DIR:
+  0 => UP
+  1 => DOWN
+```
+
 Counter Mod= 16
 |TIME|CLK|RST|DIR|OUT|
 |-|-|-|-|-|

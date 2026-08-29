@@ -9,9 +9,8 @@ generate
   for(i= 0; i< Width; i= i+ 1) begin: sync_down
     if(i== 0)
       t_ff u(.clk(clk), .rst(rst), .t(1'b1), .q(out[i]));
-    else begin
+    else
       t_ff u(.clk(clk), .rst(rst), .t(&(~(out[i-1:0]))), .q(out[i]));
-    end
   end
 endgenerate
 endmodule

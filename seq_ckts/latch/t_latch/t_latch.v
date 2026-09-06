@@ -26,12 +26,14 @@ wire q, q_n;
 integer i;
 
 t_latch dut(.en(en), .rst(rst), .t(t), .q(q), .q_n(q_n));
+
 initial begin
   rst= 1'b1; #10;
   rst= 1'b0;
   for(i= 0; i< 2** 2; i+= 1) begin
     {en, t}= i; #10;
   end
+  $finish;
 end
 
 initial begin

@@ -27,6 +27,7 @@ endmodule
 
 // Testbench Module
 
+`timescale 1ns/1ns
 module tb_ripple_carry_adder;
 localparam Width= 4;
 reg [Width-1:0] in0, in1;

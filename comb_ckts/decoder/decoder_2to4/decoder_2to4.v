@@ -11,6 +11,7 @@ endmodule
 
 // Testbench Module
 
+`timescale 1ns/1ns
 module tb_decoder_2to4;
 reg [1:0] in;
 wire [3:0] out;

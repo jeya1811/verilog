@@ -10,6 +10,7 @@ endmodule
 
 // Testbench Module
 
+`timescale 1ns/1ns
 module tb_half_subtractor;
 reg in0, in1;
 wire diff, bout;

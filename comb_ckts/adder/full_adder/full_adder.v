@@ -10,6 +10,7 @@ endmodule
 
 // Testbench Module
 
+`timescale 1ns/1ns
 module tb_full_adder;
 reg in0, in1, cin;
 wire sum, cout;

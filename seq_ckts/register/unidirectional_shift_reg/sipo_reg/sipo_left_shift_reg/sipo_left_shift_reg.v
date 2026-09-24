@@ -29,6 +29,7 @@ endmodule
 
 // Testbench Module
 
+`timescale 1ns/1ns
 module tb_sipo_left_shift_reg;
 localparam Width= 4;
 reg clk= 1'b0;

@@ -55,6 +55,7 @@ endmodule
 
 // Testbench Module
 
+`timescale 1ns/1ns
 module tb_binary_excess3;
 localparam Width= 4;
 reg [Width-1:0] in;

@@ -61,6 +61,7 @@ endmodule
 
 // Testbench Module
 
+`timescale 1ns/1ns
 module tb_alu_2;
 localparam Width= 1;
 reg [Width-1:0] in0, in1;

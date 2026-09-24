@@ -34,6 +34,7 @@ endmodule
 
 // Testbench Module
 
+`timescale 1ns/1ns
 module tb_mod_n_counter;
 localparam Mod= 10;
 reg clk= 1'b0;

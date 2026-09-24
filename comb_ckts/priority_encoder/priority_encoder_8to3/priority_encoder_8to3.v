@@ -21,6 +21,7 @@ endmodule
 
 // Testbench Module
 
+`timescale 1ns/1ns
 module tb_priority_encoder_8to3;
 reg [7:0] in;
 wire [2:0] out;

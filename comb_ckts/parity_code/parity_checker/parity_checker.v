@@ -24,6 +24,7 @@ endmodule
 
 // Testbench Module
 
+`timescale 1ns/1ns
 module tb_parity_checker;
 localparam Width= 5;
 reg [Width-1:0] in_parity_code;

@@ -10,6 +10,7 @@ endmodule
 
 // Testbench Module
 
+`timescale 1ns/1ns
 module tb_mux_2to1;
 localparam Width= 2;
 reg [Width-1:0] in0, in1;

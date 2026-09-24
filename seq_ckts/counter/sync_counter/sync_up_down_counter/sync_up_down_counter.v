@@ -32,6 +32,7 @@ endmodule
 
 // Testbench Module
 
+`timescale 1ns/1ns
 module tb_sync_up_down_counter;
 localparam Width= 4;
 reg clk= 1'b0;

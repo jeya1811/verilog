@@ -72,6 +72,7 @@ endmodule
 
 // Testbench Module
 
+`timescale 1ns/1ns
 module tb_seq_det_1101;
 reg clk= 1'b0;
 reg rst= 1'b1;

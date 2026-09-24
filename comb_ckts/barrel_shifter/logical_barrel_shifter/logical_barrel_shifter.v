@@ -40,6 +40,7 @@ endmodule
 
 // Testbench Module
 
+`timescale 1ns/1ns
 module tb_logical_barrel_shifter;
 localparam Width= 5, Shift= 2;
 reg [Width-1:0] in;

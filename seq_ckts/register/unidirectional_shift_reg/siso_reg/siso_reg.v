@@ -31,6 +31,7 @@ endmodule
 
 // Testbench Module
 
+`timescale 1ns/1ns
 module tb_siso_reg;
 localparam Width= 4;
 reg clk= 1'b0;

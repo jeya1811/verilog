@@ -9,6 +9,7 @@ endmodule
 
 // Testbench Module
 
+`timescale 1ns/1ns
 module tb_incrementer;
 localparam Width= 4;
 reg [Width-1:0] in;

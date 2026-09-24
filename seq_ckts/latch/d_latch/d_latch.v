@@ -20,6 +20,7 @@ endmodule
 
 // Testbench Module
 
+`timescale 1ns/1ns
 module tb_d_latch;
 reg en, rst, d;
 wire q, q_n;

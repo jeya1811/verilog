@@ -11,6 +11,7 @@ endmodule
 
 // Testbench Module
 
+`timescale 1ns/1ns
 module tb_demux_1to2;
 localparam Width= 2;
 reg [Width-1:0] in;

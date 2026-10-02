@@ -4,43 +4,43 @@ module priority_encoder_8to3(
   input [7:0] in,
   output reg [2:0] out
 );
-always @(*) begin
-  casez(in)
-    8'b1???????: out= 3'b111;
-    8'b01??????: out= 3'b110;
-    8'b001?????: out= 3'b101;
-    8'b0001????: out= 3'b100;
-    8'b00001???: out= 3'b011;
-    8'b000001??: out= 3'b010;
-    8'b0000001?: out= 3'b001;
-    8'b00000001: out= 3'b000;
-    default: out= 'bx;
-  endcase
-end
+  always @(*) begin
+    casez(in)
+      8'b1???????: out= 3'b111;
+      8'b01??????: out= 3'b110;
+      8'b001?????: out= 3'b101;
+      8'b0001????: out= 3'b100;
+      8'b00001???: out= 3'b011;
+      8'b000001??: out= 3'b010;
+      8'b0000001?: out= 3'b001;
+      8'b00000001: out= 3'b000;
+      default: out= 'bx;
+    endcase
+  end
 endmodule
 
 // Testbench Module
 
 `timescale 1ns/1ns
 module tb_priority_encoder_8to3;
-reg [7:0] in;
-wire [2:0] out;
-integer i;
-
-priority_encoder_8to3 dut(.in(in), .out(out));
-
-initial begin
-  for(i= 0; i< 2** 8; i+= 1) begin
-    in= i; #10;
+  reg [7:0] in;
+  wire [2:0] out;
+  integer i;
+  priority_encoder_8to3 dut(
+    .in(in),
+    .out(out)
+  );
+  initial begin
+    for(i= 0; i< 2** 8; i+= 1) begin
+      in= i; #10;
+    end
+    $finish;
   end
-  $finish;
-end
-
-initial begin
-  $dumpfile(".vcd");
-  $dumpvars(0, tb_priority_encoder_8to3);
-  $display("|TIME|IN|OUT|");
-  $display("|-|-|-|");
-  $monitor("|%0t|%b|%b|", $time, in, out);
-end
+  initial begin
+    $dumpfile(".vcd");
+    $dumpvars(0, tb_priority_encoder_8to3);
+    $display("|TIME|IN|OUT|");
+    $display("|-|-|-|");
+    $monitor("|%0t|%b|%b|", $time, in, out);
+  end
 endmodule

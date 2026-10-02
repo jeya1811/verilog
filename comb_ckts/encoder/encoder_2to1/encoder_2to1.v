@@ -4,37 +4,37 @@ module encoder_2to1(
   input [1:0] in,
   output reg out
 );
-always @(*) begin
-  case(in)
-    2'b01: out= 'b0;
-    2'b10: out= 'b1;
-    default: out= 'bx;
-  endcase
-end
+  always @(*) begin
+    case(in)
+      2'b01: out= 'b0;
+      2'b10: out= 'b1;
+      default: out= 'bx;
+    endcase
+  end
 endmodule
 
 // Testbench Module
 
 `timescale 1ns/1ns
 module tb_encoder_2to1;
-reg [1:0] in;
-wire out;
-integer i;
-
-encoder_2to1 dut(.in(in), .out(out));
-
-initial begin
-  for(i= 0; i< 2** 2; i+= 1) begin
-    in= i; #10;
+  reg [1:0] in;
+  wire out;
+  integer i;
+  encoder_2to1 dut(
+    .in(in),
+    .out(out)
+  );
+  initial begin
+    for(i= 0; i< 2** 2; i+= 1) begin
+      in= i; #10;
+    end
+    $finish;
   end
-  $finish;
-end
-
-initial begin
-  $dumpfile(".vcd");
-  $dumpvars(0, tb_encoder_2to1);
-  $display("|TIME|IN|OUT|");
-  $display("|-|-|-|");
-  $monitor("|%0t|%b|%b|", $time, in, out);
-end
+  initial begin
+    $dumpfile(".vcd");
+    $dumpvars(0, tb_encoder_2to1);
+    $display("|TIME|IN|OUT|");
+    $display("|-|-|-|");
+    $monitor("|%0t|%b|%b|", $time, in, out);
+  end
 endmodule

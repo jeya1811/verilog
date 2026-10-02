@@ -1,49 +1,54 @@
 // Design Module
 
-module demux_1to4 #(parameter Width= 1)(
-  input [Width-1:0] in,
+module demux_1to4 #(
+  parameter Width= 1
+)(
   input [1:0] sel,
+  input [Width-1:0] in,
   output reg [Width-1:0] out0, out1, out2, out3
 );
-always @(*) begin
-  out0= 'b0;
-  out1= 'b0;
-  out2= 'b0;
-  out3= 'b0;
-  case(sel)
-    2'b00: out0= in;
-    2'b01: out1= in;
-    2'b10: out2= in;
-    2'b11: out3= in;
-  endcase
-end
+  always @(*) begin
+    out0= 'b0;
+    out1= 'b0;
+    out2= 'b0;
+    out3= 'b0;
+    case(sel)
+      2'b00: out0= in;
+      2'b01: out1= in;
+      2'b10: out2= in;
+      2'b11: out3= in;
+    endcase
+  end
 endmodule
 
 // Testbench Module
 
 `timescale 1ns/1ns
 module tb_demux_1to4;
-localparam Width= 2;
-reg [Width-1:0] in;
-reg [1:0] sel;
-wire [Width-1:0] out0, out1, out2, out3;
-integer i;
-
-demux_1to4 #(.Width(Width)) dut(.in(in), .sel(sel), .out0(out0), .out1(out1), .out2(out2), .out3(out3));
-
-initial begin
-  for(i= 0; i< 2** (Width+ 2); i+= 1) begin
-    {in, sel}= i; #10;
+  localparam Width= 2;
+  reg [1:0] sel;
+  reg [Width-1:0] in;
+  wire [Width-1:0] out0, out1, out2, out3;
+  integer i;
+  demux_1to4 #(
+    .Width(Width)
+  ) dut(
+    .sel(sel),
+    .in(in),
+    .out0(out0), .out1(out1), .out2(out2), .out3(out3)
+  );
+  initial begin
+    for(i= 0; i< 2** (Width+ 2); i+= 1) begin
+      {sel, in}= i; #10;
+    end
+    $finish;
   end
-  $finish;
-end
-
-initial begin
-  $dumpfile(".vcd");
-  $dumpvars(0, tb_demux_1to4);
-  $display("Bit Width= %0d", Width);
-  $display("|TIME|IN|SEL|OUT0|OUT1|OUT2|OUT3|");
-  $display("|-|-|-|-|-|-|-|");
-  $monitor("|%0t|%b|%b|%b|%b|%b|%b|", $time, in, sel, out0, out1, out2, out3);
-end
+  initial begin
+    $dumpfile(".vcd");
+    $dumpvars(0, tb_demux_1to4);
+    $display("Bit Width= %0d", Width);
+    $display("|TIME|SEL|IN|OUT0|OUT1|OUT2|OUT3|");
+    $display("|-|-|-|-|-|-|-|");
+    $monitor("|%0t|%b|%b|%b|%b|%b|%b|", $time, sel, in, out0, out1, out2, out3);
+  end
 endmodule

@@ -63,7 +63,7 @@ module nor_gate #(
   input [Width-1:0] in0, in1,
   output [Width-1:0] out
 );
-  assign out= in0~| in1;
+  assign out= ~(in0| in1);
 endmodule
 
 module and_gate #(

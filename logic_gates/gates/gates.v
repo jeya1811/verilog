@@ -99,7 +99,7 @@ module nand_gate #(
   input [Width-1:0] in0, in1,
   output [Width-1:0] out
 );
-  assign out= in0~& in1;
+  assign out= ~(in0& in1);
 endmodule
 
 module nor_gate #(
@@ -108,7 +108,7 @@ module nor_gate #(
   input [Width-1:0] in0, in1,
   output [Width-1:0] out
 );
-  assign out= in0~| in1;
+  assign out= ~(in0| in1);
 endmodule
 
 module xor_gate #(
@@ -126,7 +126,7 @@ module xnor_gate #(
   input [Width-1:0] in0, in1,
   output [Width-1:0] out
 );
-  assign out= in0~^ in1;
+  assign out= ~(in0^ in1);
 endmodule
 
 // Testbench Module

@@ -23,7 +23,9 @@ module alu_2 #(
   assign overflow= (opcode== 1'b0)? (~sign_diff& sign_change): (sign_diff& sign_change);
 endmodule
 
-module mux_2to1 #(parameter Width= 1)(
+module mux_2to1 #(
+  parameter Width= 1
+)(
   input sel,
   input [Width-1:0] in0, in1,
   output reg [Width-1:0] out,

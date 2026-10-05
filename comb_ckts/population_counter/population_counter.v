@@ -20,28 +20,28 @@ endmodule
 
 `timescale 1ns/1ns
 module tb_population_counter;
-localparam Width= 2;
-reg [Width-1:0] in;
-wire [$clog2(Width):0] out;
-integer i;
-population_counter #(
-  .Width(Width)
-) dut(
-  .in(in),
-  .out(out)
-);
-initial begin
-  for(i= 0; i< 2** Width; i+= 1) begin
-    in= i; #10;
+  localparam Width= 2;
+  reg [Width-1:0] in;
+  wire [$clog2(Width):0] out;
+  integer i;
+  population_counter #(
+    .Width(Width)
+  ) dut(
+    .in(in),
+    .out(out)
+  );
+  initial begin
+    for(i= 0; i< 2** Width; i+= 1) begin
+      in= i; #10;
+    end
+    $finish;
   end
-  $finish;
-end
-initial begin
-  $dumpfile(".vcd");
-  $dumpvars(0, tb_population_counter);
-  $display("Bit Width= %0d", Width);
-  $display("|TIME|IN|OUT|");
-  $display("|-|-|-|");
-  $monitor("|%0t|%b|%b|", $time, in, out);
-end
+  initial begin
+    $dumpfile(".vcd");
+    $dumpvars(0, tb_population_counter);
+    $display("Bit Width= %0d", Width);
+    $display("|TIME|IN|OUT|");
+    $display("|-|-|-|");
+    $monitor("|%0t|%b|%b|", $time, in, out);
+  end
 endmodule

@@ -1,56 +1,53 @@
 // Design Module
 
 module parity_code #(
-  parameter Width= 2
+  parameter Width= 2,
+  parameter Parity= 0
 )(
-  input [Width-1:0] in,
-  output [Width:0] out_even_parity_code, out_odd_parity_code,
-  output out_even_parity_error, out_odd_parity_error
-);
-  even_parity_generator #(.Width(Width)) u_even_parity_generator(.in(in), .out(out_even_parity_code));
-  odd_parity_generator #(.Width(Width)) u_odd_parity_generator(.in(in), .out(out_odd_parity_code));
-  even_parity_checker #(.Width(Width)) u_even_parity_checker(.in(out_even_parity_code), .out_error(out_even_parity_error));
-  odd_parity_checker #(.Width(Width)) u_odd_parity_checker(.in(out_odd_parity_code), .out_error(out_odd_parity_error));
-endmodule
-
-module even_parity_generator #(
-  parameter Width= 2
-)(
-  input [Width-1:0] in,
-  output [Width:0] out
-);
-  wire parity_bit;
-  assign parity_bit= ^in;
-  assign out= {parity_bit, in};
-endmodule
-
-module odd_parity_generator #(
-  parameter Width= 2
-)(
-  input [Width-1:0] in,
-  output [Width:0] out
-);
-  wire parity_bit;
-  assign parity_bit= ~^in;
-  assign out= {parity_bit, in};
-endmodule
-
-module even_parity_checker #(
-  parameter Width= 2
-)(
-  input [Width:0] in,
+  input [Width-1:0] in_data,
+  output [Width:0] out_code,
+  output [Width-1:0] out_data,
   output out_error
 );
-  assign out_error= ^in;
+  parity_encoder #(
+    .Width(Width),
+    .Parity(Parity)
+  ) u_parity_encoder(
+    .in_data(in_data),
+    .out_code(out_code)
+  );
+  parity_decoder #(
+    .Width(Width),
+    .Parity(Parity)
+  ) u_parity_decoder(
+    .in_code(out_code),
+    .out_data(out_data),
+    .out_error(out_error)
+  );
 endmodule
 
-module odd_parity_checker #(
-  parameter Width= 2
+module parity_encoder #(
+  parameter Width= 2,
+  parameter Parity= 0
 )(
-  input [Width:0] in,
+  input [Width-1:0] in_data,
+  output [Width:0] out_code
+);
+  wire parity;
+  assign parity=Parity^ (^in_data);
+  assign out_code= {parity, in_data};
+endmodule
+
+module parity_decoder #(
+  parameter Width= 2,
+  parameter Parity= 0
+)(
+  input [Width:0] in_code,
+  output [Width-1:0] out_data,
   output out_error
 );
-  assign out_error= ~^in;
+  assign out_error= Parity^ (^in_code);
+  assign out_data= (!out_error)? in_code[Width-1:0]: 'bx;
 endmodule
 
 // Testbench Module
@@ -58,29 +55,33 @@ endmodule
 `timescale 1ns/1ns
 module tb_parity_code;
   localparam Width= 4;
-  reg [Width-1:0] in;
-  wire [Width:0] out_even_parity_code, out_odd_parity_code;
-  wire out_even_parity_error, out_odd_parity_error;
+  localparam Parity= 1;
+  reg [Width-1:0] in_data;
+  wire [Width:0] out_code;
+  wire [Width-1:0] out_data;
+  wire out_error;
   integer i;
   parity_code #(
-    .Width(Width)
+    .Width(Width),
+    .Parity(Parity)
   ) dut(
-    .in(in),
-    .out_even_parity_code(out_even_parity_code), .out_odd_parity_code(out_odd_parity_code),
-    .out_even_parity_error(out_even_parity_error), .out_odd_parity_error(out_odd_parity_error)
+    .in_data(in_data),
+    .out_code(out_code),
+    .out_data(out_data),
+    .out_error(out_error)
   );
   initial begin
     for(i= 0; i< 2** Width; i+= 1) begin
-      in= i; #10;
+      in_data= i; #10;
     end
     $finish;
   end
   initial begin
     $dumpfile(".vcd");
     $dumpvars(0, tb_parity_code);
-    $display("Bit Width= %0d", Width);
-    $display("|TIME|IN|EVEN_PARITY_CODE|ODD_PARITY_CODE|EVEN_PARITY_ERROR|ODD_PARITY_ERROR|");
-    $display("|-|-|-|-|-|-|");
-    $monitor("|%0t|%b|%b|%b|%b|%b|", $time, in, out_even_parity_code, out_odd_parity_code, out_even_parity_error, out_odd_parity_error);
+    $display("Bit Width= %0d and Parity= %0s", Width, Parity? "odd": "even");
+    $display("|TIME|IN_DATA|OUT_CODE|OUT_DATA|OUT_ERROR|");
+    $display("|-|-|-|-|-|");
+    $monitor("|%0t|%b|%b|%b|%b|", $time, in_data, out_code, out_data, out_error);
   end
 endmodule

@@ -45,8 +45,7 @@ endmodule
 
 `timescale 1ns/1ns
 module tb_decade_counter;
-  reg clk= 1'b0;
-  reg rst= 1'b1;
+  reg clk, rst;
   wire [3:0] out;
   integer i;
   decade_counter dut(
@@ -55,6 +54,7 @@ module tb_decade_counter;
   );
   always #5 clk= ~clk;
   initial begin
+    clk= 1'b0; rst= 1'b1;
     #10; rst= 1'b0;
     for(i= 0; i< 10; i+= 1)
       #10;

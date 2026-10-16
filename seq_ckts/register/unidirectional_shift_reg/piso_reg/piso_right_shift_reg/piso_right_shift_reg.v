@@ -47,8 +47,7 @@ endmodule
 `timescale 1ns/1ns
 module tb_piso_right_shift_reg;
   localparam Width= 4;
-  reg clk= 1'b0;
-  reg rst= 1'b1;
+  reg clk, rst;
   reg load;
   reg [Width-1:0] in;
   wire out;
@@ -63,6 +62,7 @@ module tb_piso_right_shift_reg;
   );
   always #5  clk= ~clk;
   initial begin
+    clk= 1'b0; rst= 1'b1;
     #10; rst= 1'b0;
     for(i= 0; i< 2** Width; i+= 1) begin
       load= 1'b1; in= i; #10;

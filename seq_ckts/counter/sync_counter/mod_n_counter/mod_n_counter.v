@@ -48,8 +48,7 @@ endmodule
 `timescale 1ns/1ns
 module tb_mod_n_counter;
   localparam Mod= 10;
-  reg clk= 1'b0;
-  reg rst= 1'b1;
+  reg clk, rst;
   wire [($clog2(Mod))-1:0] out;
   integer i;
   mod_n_counter #(
@@ -60,6 +59,7 @@ module tb_mod_n_counter;
   );
   always #5 clk= ~clk;
   initial begin
+    clk= 1'b0; rst= 1'b1;
     #10; rst= 1'b0;
     for(i= 0; i< Mod; i+= 1)
       #10;

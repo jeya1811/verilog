@@ -81,9 +81,8 @@ endmodule
 
 `timescale 1ns/1ns
 module tb_seq_det_1101;
-  reg clk= 1'b0;
-  reg rst= 1'b1;
-  reg [7:0] in_seq= 8'b11011011;
+  reg clk, rst;
+  reg [7:0] in_seq;
   reg in;
   wire out_non_overlap, out_overlap;
   integer i;
@@ -94,6 +93,8 @@ module tb_seq_det_1101;
   );
   always #5 clk= ~clk;
   initial begin
+    in_seq= 8'b11011011;
+    clk= 1'b0; rst= 1'b1;
     #10; rst= 1'b0;
     for(i= 0; i< 8; i+= 1) begin
       in= in_seq[i]; #10;

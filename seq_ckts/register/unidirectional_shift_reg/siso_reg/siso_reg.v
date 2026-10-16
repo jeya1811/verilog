@@ -46,9 +46,8 @@ endmodule
 `timescale 1ns/1ns
 module tb_siso_reg;
   localparam Width= 4;
-  reg clk= 1'b0;
-  reg rst= 1'b1;
-  reg [7:0] in_seq= 8'b01011101;
+  reg clk, rst;
+  reg [7:0] in_seq;
   reg in;
   wire out;
   integer i;
@@ -61,6 +60,8 @@ module tb_siso_reg;
   );
   always #5 clk= ~clk;
   initial begin
+    in_seq= 8'b01011101;
+    clk= 1'b0; rst= 1'b1;
     #10; rst= 1'b0;
     for(i= 0; i< 2** 3; i+= 1) begin
       in= in_seq[7-i]; #10;

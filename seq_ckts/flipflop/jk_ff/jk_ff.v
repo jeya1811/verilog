@@ -25,8 +25,7 @@ endmodule
 
 `timescale 1ns/1ns
 module tb_jk_ff;
-  reg clk= 1'b0;
-  reg rst= 1'b1;
+  reg clk, rst;
   reg j, k;
   wire q, q_n;
   integer i;
@@ -38,6 +37,7 @@ module tb_jk_ff;
   );
   always #5 clk= ~clk;
   initial begin
+    clk= 1'b0; rst= 1'b1;
     #10; rst= 1'b0;
     for(i= 0; i< 2** 2; i+= 1) begin
       {j, k}= i; #10;

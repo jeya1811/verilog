@@ -37,8 +37,7 @@ endmodule
 `timescale 1ns/1ns
 module tb_pipo_reg;
   localparam Width= 4;
-  reg clk= 1'b0;
-  reg rst= 1'b1;
+  reg clk, rst;
   reg [Width-1:0] in;
   wire [Width-1:0] out;
   integer i;
@@ -51,6 +50,7 @@ module tb_pipo_reg;
   );
   always #5 clk= ~clk;
   initial begin
+    clk= 1'b0; rst= 1'b1;
     #10; rst= 1'b0;
     for(i= 0; i< 2** Width; i+= 1) begin
       in= i; #10;
